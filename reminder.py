@@ -8,6 +8,7 @@ TO_MAIL = "janiswelsch@gmail.com"
 ACCOUNT_SID = os.environ.get("ACCOUNT_SID")
 AUTH_TOKEN = os.environ.get("AUTH_TOKEN")
 
+
 class Reminder:
     def __init__(self, message):
         self.message = message
@@ -17,8 +18,7 @@ class Reminder:
         self.API_KEY = os.environ.get("API_KEY")
         self.AUTH_TOKEN = os.environ.get("AUTH_TOKEN")
         self.ACCOUNT_SID = os.environ.get("ACCOUNT_SID")
-        #Telefonnummern als ev's einbinden
-
+        # Telefonnummern als ev's einbinden
 
     # -------------------- sent Message as Email -------------------- #
     def send_mail(self):

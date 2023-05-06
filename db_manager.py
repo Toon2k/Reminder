@@ -5,6 +5,7 @@ DBPW = os.environ.get("DBPW")
 
 
 class DB_Manager:
+
     def __init__(self, db_name):
         self.db_name = db_name
         self.mydb = mysql.connector.connect(
