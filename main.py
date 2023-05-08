@@ -3,6 +3,7 @@ from db_manager import DB_Manager
 from reminder import Reminder
 
 
+
 timer = datetime.datetime.now()
 today = timer.strftime("%d.%m.")
 
@@ -27,7 +28,7 @@ if len(myresult) != 0:
 
 # -------------------- sent Message -------------------- #
 reminder = Reminder(message)    # NameError
-reminder.send_mail()
+reminder.send_whatsapp()
 
 
 # TODO: check weather for frost and rain and send reminder to protect plants / not having to water during summer

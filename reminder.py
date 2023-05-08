@@ -1,6 +1,10 @@
 import smtplib
 from twilio.rest import Client
 import os
+from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
 
 MY_EMAIL = "pyemailtest33@gmail.com"
 MAIL_PW = os.environ.get("MAIL_PW")
@@ -41,3 +45,26 @@ class Reminder:
     #         to="+4915208732044",
     #     )
 
+    # -------------------- sent Message as WhatsAPP -------------------- #
+    def send_whatsapp(self):
+        url = "https://web.whatsapp.com/"
+        chrome_driver_path = "C:/Users/janis/Desktop/Tools/Chrome Driver/chromedriver.exe"
+        driver_service = Service(executable_path=chrome_driver_path)
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option("detach", True)
+        options.add_argument("--start-maximized")
+        options.add_argument(r"--user-data-dir=C:\Users\janis\AppData\Local\Google\Chrome\User Data\Default")   # option --headless breaks it until restart!
+
+        driver = webdriver.Chrome(service=driver_service, options=options)
+        driver.get(url)
+        time.sleep(4)
+
+        receiver = driver.find_element(By.CSS_SELECTOR, "span[title='Janis Welsch']")
+        receiver.click()
+        time.sleep(2)
+
+        text_input = driver.find_element(By.XPATH, "//*[@id='main']/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p")
+        text_input.send_keys(f"{self.message}\ue007")
+        time.sleep(1)
+
+        driver.quit()
