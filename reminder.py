@@ -22,7 +22,8 @@ class Reminder:
         self.API_KEY = os.environ.get("API_KEY")
         self.AUTH_TOKEN = os.environ.get("AUTH_TOKEN")
         self.ACCOUNT_SID = os.environ.get("ACCOUNT_SID")
-        # Telefonnummern als ev's einbinden
+        self.MY_PHONE_NUMBER = os.environ.get("MY_PHONE_NUMBER")
+        self.TWILIO_PHONE_NUMBER = os.environ.get("TWILIO_PHONE_NUMBER")
 
     # -------------------- sent Message as Email -------------------- #
     def send_mail(self):
@@ -41,8 +42,8 @@ class Reminder:
     #     self.client = Client(ACCOUNT_SID, AUTH_TOKEN)  #ins init?
     #     self.sms = self.client.messages.create(
     #         body=self.message,
-    #         from="+12762997306",
-    #         to="+4915208732044",
+    #         from=self.TWILIO_PHONE_NUMBER,
+    #         to=self.MY_PHONE_NUMBER,
     #     )
 
     # -------------------- sent Message as WhatsAPP -------------------- #
